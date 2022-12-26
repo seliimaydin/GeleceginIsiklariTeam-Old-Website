@@ -1,0 +1,90 @@
+<?php require 'header.php';
+
+$takim=$baglanti->prepare("SELECT * from takim where id=:id ");
+
+$takim->execute(array(
+    'id'=>$_GET['id']
+));
+
+$takimcek=$takim->fetch(PDO::FETCH_ASSOC)
+
+    ?>
+
+    <!-- Main content -->
+    <section> <class="content">
+      <div class="row">
+
+          </div>
+        </section>  <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Site Ayarları</h3>
+              </div>
+
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="islem/islem.php" method="POST" enctype="multipart/form-data" role="form">
+              <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1"></label>
+                    <img style="width: 300px; height: 175px;" src="resimler/takim/<?php echo $takimcek['resim'] ?>">
+                  </div>
+              <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Resim</label>
+                    <input name="resim" type="file" class="form-control" id="exampleInputEmail1" value="" placeholder="Lüten Resim Ekleyin">
+                    <form action="islem/islem.php" method="POST">
+
+                  </div>
+
+
+
+
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Sıra</label>
+                    <input name="sira" type="number" class="form-control" id="exampleInputEmail1" value="<?php echo $takimcek['sira'] ?>" placeholder="Lütfen Sıra Numarasını Giriniz">
+                  </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+                <?php
+
+if ($_GET['durum']=="Başarılı") { ?>
+
+  <h4 style="color:green; margin-left:10px">Başarılı</h4>
+
+  <?php
+}
+elseif($_GET['durum']=="Başarısız"){?>
+  <h4 style="color:red; margin-left:10px">Başarısız</h4
+<?php
+}
+?>
+
+
+
+
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button name="takimduzenle" type="submit" class="btn btn-primary">Değiştir</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+
+        </div>
+
+      </div>
+
+  <!-- /.content-wrapper -->
+  <?php require'footer.php'; ?>

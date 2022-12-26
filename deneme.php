@@ -1,0 +1,1 @@
+<?php echo "Yönlendiriliyorsunuz.."; $geldigi_sayfa = $_SERVER['HTTPS_REFERER']; header("Refresh: 0; url=".$geldigi_sayfa.""); ?>
